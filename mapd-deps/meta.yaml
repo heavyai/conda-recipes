@@ -1,0 +1,33 @@
+{% set name = "mapd-deps" %}
+{% set version = "0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+build:
+  skip: True # [not linux]
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+    - flex
+
+# ubuntu: apt-get install golang maven
+# conda-forge has : go maven
+
+#test:
+#  commands:
+#    - mapdql --version
+
+about:
+  summary: 'The MapD Core dependencies'
+
+  description: |
+    Build MapD Core dependencies using system libraries as well as
+    from sources. Supported systems: Ubuntu, CentOS.
+
+extra:
+  recipe-maintainers:
+    - pearu
